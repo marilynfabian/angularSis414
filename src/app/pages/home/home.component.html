@@ -118,6 +118,17 @@
             </div>
 
         </div>
+        <div>
+            <form>
+                <label>Nombres</label><br>
+                <input type="text" [ngModel]="name" [ngModelOptions]="{ standalone: true }"><br>
+                {{name}}
+                <label>Abrev:</label><br>
+                <input type="text" [ngModel]="abrev" [ngModelOptions]="{ standalone: true }"><br>
+                {{abrev}}
+                <input type="button" value="Enviar" (click)="save()">
+            </form>
+        </div>
         <div class="container" id="laboratorio">
             <div class="card" id="uno" data-aos="fade-up"
             data-aos-duration="2000">
