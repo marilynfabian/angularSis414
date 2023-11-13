@@ -1,0 +1,486 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("/assets/images/marilynfabianFondo.webp");
+    background-size: cover;
+}
+
+/*controlar el comportamiento del scroll*/
+:root{
+    scroll-behavior: smooth;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
+header{
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(210, 153, 194, 0.5) 0%, rgba(246, 214, 255, 0.5) 100%)
+    ,url("/assets/marilynfabian1.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.head{
+    text-align: center;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.hamburger{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(3, 0, 2, 0.5);
+
+}
+
+.menu-navegacion{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20vw;
+    height: 100%;
+    background-image: linear-gradient(to top, rgb(196, 113, 245) 0%, rgb(250, 113, 205) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: transform .3s ease-in-out;
+    transform: translate(100%);
+    box-shadow: 0 0 6px rgb(19, 8, 8);
+    z-index: 2;
+}
+
+
+.button {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    position: relative;
+    padding: 20px 25px;
+    border: none;
+    outline: none;
+    background-image: linear-gradient(to top, rgb(236, 113, 245) 0%, rgb(250, 113, 205) 100%);
+    color: #dcc2e4;
+    cursor: pointer;
+    transition: .5s;
+    overflow: hidden;
+    text-align: center;
+}
+
+.button:hover {
+    color: #fff;
+}
+
+.button span {
+    position: absolute;
+    background: #fff;
+    transition: .5s;
+}
+
+.button span:nth-child(1) {
+    width: 100%;
+    height: 1px;
+    top: 0;
+    left: -100%;
+}
+
+.button span:nth-child(2) {
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    right: -100%;
+}
+
+.button span:nth-child(3) {
+    width: 1px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+}
+
+.button span:nth-child(4) {
+    width: 1px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+}
+
+.button:hover span:nth-child(1) {
+    left: 0;
+}
+
+.button:hover span:nth-child(2) {
+    right: 0;
+}
+
+.button:hover span:nth-child(3) {
+    bottom: 0;
+}
+
+.button:hover span:nth-child(4) {
+    top: 0;
+}
+
+/*cuando haga click en el boton este aparezca*/
+.spread{
+    transform: translate(0);
+}
+
+.titulo{
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.copy{
+    font-weight: 300;
+    font-size: 25px;
+}
+
+/*Los laboratorios*/
+
+.subtitulo{
+    text-align: center;
+    font-weight: 300;
+    color: blueviolet;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.contenedor-laboratorio{
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;/*espacio equitativo*/
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenedor-laboratorio img{
+    width: 40%;
+}
+
+.checklist-laboratorio{
+    width: 45%;
+}
+
+.laboratorio{
+    margin-bottom: 7px;
+    color: violet;
+}
+
+.n-laboratorio{
+    margin-bottom: 7px;
+    color: rgb(236, 188, 101);
+}
+
+.number{
+    display: inline-block;
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 700;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding-top:20px ;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.container .card{
+    background-color: #fff;
+    width: 80%;
+    height: 80%x;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
+    margin: auto;
+    transition: all 0.25s;
+    margin-bottom: 30px;
+    position: relative;
+    justify-content: center;
+    max-height: 1000px; /* Altura máxima del contenido */
+    overflow: hidden; /* Oculta el contenido excedente */
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+
+
+.container .card h1{
+    text-align: center;
+    color: #ebc0fd;
+}
+.container .card:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(3, 0, 2, 0.5);
+}
+
+.container .card img{
+    position:absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    margin-bottom: auto;
+}
+
+.container .card h4{
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.card{
+    margin-bottom: 70px;
+    padding: 3%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+textarea{
+    resize: none; /* Desactivar la opción de redimensionar manualmente el textarea */
+    border: 1px solid rgb(237, 154, 234);
+    display: flex;
+    width: 100%; /* ancho deseado del contenedor */
+    height: 95%;
+}
+.cuadrado {
+    width: 95%; /* ancho deseado del contenedor */
+    height: 95%; /* altura deseada del contenedor */
+    display: flex;
+    
+  }
+
+.experts{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0%;
+    padding-top:20px ;
+    
+}
+
+.cont-experts{
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top:20px ;
+}
+
+.n-expert{
+    color: #974bba;
+}
+.cont-expert img{
+    display: flex;
+    margin: auto;
+    
+}
+
+/*Footer*/
+footer{
+    background: #ebc0fd;
+    padding-bottom: 0.1px ;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.contact-us{
+    width: 40%;
+    color: #fff;
+}
+
+.brand{
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.brand+p{
+    font-weight: 500;
+}
+
+.social-media{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    height: 10vh;
+}
+
+.icon{
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 10px;
+
+}
+.line{
+    width: 100%;
+    margin: 0;
+    height: 2px;
+    background: #fff;
+    margin-bottom: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line p{
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .menu-navegacion{
+        width: 50vw;
+    }
+    .titulo{
+        font-size: 40px;
+    }
+    
+    .contenedor-laboratorio img{
+        width: 80%;
+        margin-bottom: 40px;
+    }
+    
+    .checklist-laboratorio{
+        width: 80%;
+    }
+    .container{
+        width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .laboratorio{
+        margin-bottom: 30px;
+    }
+    .cont-expert{
+        width:80%
+    }
+    .experts{
+        /*flex-direction: column;*/
+        width: 40%;
+    }
+
+    .footer-content{
+        justify-content: center;
+    }
+
+    .social-media{
+        width: 80%;
+        justify-content: space-evenly;
+    }
+    
+    .social-media img{
+        margin-left: 0;
+    }
+
+    .contact-us{
+        text-align: center;
+        width: 80%;
+        margin-bottom: 40px;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    menu-navegacion{
+        width: 65vw;
+    }
+
+    .hamburguer{
+        top: 20px;
+        right: 20px;
+    }
+
+    .titulo{
+        font-size: 30px;
+    }
+
+    .subtitulo{
+        font-size: 30px;
+    }
+
+    .social-media-icon{
+        margin-left: 0;
+    }
+    
+    .social-media{
+        width: 100%;
+    }
+
+    .contact-us{
+        width: 90%;
+    }
+    .experts{
+        flex-direction: column;
+        width: 10px;
+        height: 10%;
+
+    }
+}
+
+
+@media screen and (max-width:800px) {
+
+    .experts{
+        flex-direction: column;
+        width: 10px;
+        height: 10%;
+    }
+    
+}
