@@ -7,17 +7,31 @@ import { Observable } from 'rxjs';
 })
 export class LanguagesService {
 
-  url: string = "https://apirest-d1d1a-default-rtdb.firebaseio.com/v1/topList.json";
+  url: string = "https://apirest-d1d1a-default-rtdb.firebaseio.com/v1/topList";
 
   constructor(private http: HttpClient) { }
 
   getListLanguges(): Observable<any>
   {
-    return this.http.get(this.url);
+    let getUrl = this.url + ".json"
+    return this.http.get(getUrl);
   }
 
   postLanguage(body:any): Observable<any>
   {
-    return this.http.post(this.url, body)
+    let postUrl = this.url + ".json"
+    return this.http.post(postUrl, body)
   }
+
+  deleteLanguage(id:string): Observable<any>
+  {
+    let delUrl = this.url + "/" + id + ".json"
+    return this.http.delete(delUrl)
+  }
+
+  updateLanguage(id:string, body:any): Observable<any>
+  {
+    let uptUrl = this.url + "/" + id + ".json"
+    return this.http.put(uptUrl, body)
+  }  
 }

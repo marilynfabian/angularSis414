@@ -121,13 +121,36 @@
         <div>
             <form>
                 <label>Nombres</label><br>
-                <input type="text" [ngModel]="name" [ngModelOptions]="{ standalone: true }"><br>
+                <input type="text" [(ngModel)]="name" name="name"><br>
                 {{name}}
                 <label>Abrev:</label><br>
-                <input type="text" [ngModel]="abrev" [ngModelOptions]="{ standalone: true }"><br>
+                <input type="text" [(ngModel)]="abrev" name="abrev"><br>
                 {{abrev}}
                 <input type="button" value="Enviar" (click)="save()">
             </form>
+        </div>
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nro</th>
+                        <th>Abrev.</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of dataSource; index as nro">
+                        <th>{{nro + 1}}</th>
+                        <th>{{row.abrev}}</th>
+                        <th>{{row.name}}</th>
+                        <th>
+                            <button (click)="actualizar(row.id)">Editar</button>
+                            <button (click)="borrar(row.id)">Eliminar</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="container" id="laboratorio">
             <div class="card" id="uno" data-aos="fade-up"

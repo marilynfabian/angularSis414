@@ -10,26 +10,61 @@ export class HomeComponent implements OnInit{
   
   name:string = "Python";
   abrev:string = "Py";
-  data:any = [];
+  dataSource:any = [];
 
   constructor(private language: LanguagesService){}
 
   ngOnInit()
   {
     this.language.getListLanguges().subscribe( (data) => {
-      console.log(data)
+      for(var key in data)
+      {
+        var row = {id:key, abrev: data[key].abrev, name: data[key].name}
+        this.dataSource.push(row)
+      }
+      console.log(this.dataSource)
     } )
   }
 
   save()
   {
-    var body = 
+    let body = 
     {
       name: this.name,
       abrev: this.abrev
     }
     this.language.postLanguage(body).subscribe( (data) => {
-      console.log(data)   
+      if(data!=null)
+      {
+        window.location.reload();
+      }
+    })
+  }
+
+  borrar(id:string){
+    let aux = confirm("Esta Seguro de Borrar")
+    if(!aux) return
+    this.language.deleteLanguage(id).subscribe( (data) => {
+      if(data==null)
+      {
+        window.location.reload();
+      }
+    })
+  }
+
+  actualizar(id:string){
+    let aux = confirm("Esta Seguro de Actualizar")
+    let body = 
+    {
+      abrev: "test Upt abrev",
+      name:  "test Upt name"
+    }    
+    if(!aux) return
+    this.language.updateLanguage(id, body).subscribe( (data) => {
+      if(data!=null)
+      {
+        window.location.reload();
+      }
     })
   }
 }
