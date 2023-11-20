@@ -75,14 +75,15 @@
     <div class="contenedor head" data-aos="fade-down"
     data-aos-easing="linear"
     data-aos-duration="1500" >
+
+    
         <h1 class="titulo">EXAMEN DE PRIMER PARCIAL</h1>
         <p>El objetivo principal del curso es guiarlo desde un estado de completo analfabetismo de programación hasta un nivel de conocimiento de programación que le permita diseñar, escribir, depurar y ejecutar programas codificados en el lenguaje JavaScript, y comprender los conceptos básicos de la tecnología de desarrollo de software.</p>
     </div>
 </header>
+
 <main>
-    <section class="laboratorios contenedor" id="laboratorio" data-aos="fade-down"
-    data-aos-easing="linear"
-    data-aos-duration="1500">
+    <section class="laboratorios contenedor" id="laboratorio" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
         <h2 class="subtitulo">Laboratorios Javascript</h2>
         <div class="contenedor-laboratorio">
             <img src="/assets/images/marilynfabian3.png" alt="">
@@ -116,8 +117,79 @@
                     <p>Familiarize the student with: function basics, functions as first-class members, arrow functions, recursion.</p>
                 </div>
             </div>
-
         </div>
+
+            <div>
+                <table border="1" class="tabla-des">
+                    <tr>
+                        <th>Nro</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Correo</th>
+                    </tr>
+                    <tr *ngFor="let user of dataUsers; index as i">
+                        <td>{{ (i + 1) }}</td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.username }}</td>                    
+                        <td>{{ user.email }}</td>                    
+                    </tr>
+                </table>
+                <br>
+                <table border="1" class="tabla-des">
+                    <tr>
+                        <th>Nro</th>
+                        <th>Abrev</th>
+                        <th>Nombre</th>
+                    </tr>
+                    <tr *ngFor="let item of dataLanguages; index as i">
+                        <td>{{ (i + 1) }}</td>
+                        <td>{{ item.languages.abrev }}</td>
+                        <td>{{ item.languages.name }}</td>
+                    </tr>
+                </table>            
+            </div>
+
+            <div>
+                <form>
+                    <label>Nombres</label><br>
+                    <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"><br>
+                    {{name}}
+                    <label>Abrev</label><br>
+                    <input type="text" [(ngModel)]="abrev" [ngModelOptions]="{standalone: true}"><br>
+                    {{abrev}}
+                    <input type="button" value="Enviar" (click)="save()">
+                    
+                </form>
+            </div>
+
+            <div>
+                <table border="1" class="=tabla-des">
+                    <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Abrev.</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of dataSource; index as nro">
+                            <th>{{nro+1}}</th>
+                            <th>{{row.abrev}}</th>
+                            <th>{{row.name}}</th>
+                            <th>
+                                <button (click)="borrar(row.id)">Eliminar</button>
+                                <!--<button (click)="editar(row.id)">Editar</button>-->                                <button (click)="actualizar(row.id)">Actualizar</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+
+
         <div class="container" id="laboratorio">
             <div class="card" id="uno" data-aos="fade-up"
             data-aos-duration="2000">
@@ -132,7 +204,7 @@
                     Utilice el método prompt para hacer esto. Al final, muestra el primer y el último contacto de la lista.</p>
                 <br>
                     <div class="cuadrado">
-<textarea cols="100" rows="30">
+                        <textarea cols="100" rows="30">
 var nom1 = "Maxwell Wright";
 var nom2 = "Raja Villarreal";
 var nom3 = "Helen Richards";
@@ -152,9 +224,10 @@ function imprimir()
 
 imprimir();
                         
-</textarea>
-</div>
+                          </textarea>
+                    </div>
             </div>
+            
             <div class="card" id="dos" data-aos="fade-up"
             data-aos-duration="2000">
                 <h1>LABORATORIO 2</h1>
@@ -173,7 +246,7 @@ imprimir();
                     o correo electrónico), no agregue el contacto.</p>
                 <br>
                     <div class="cuadrado">
-<textarea cols="100" rows="30">
+                        <textarea cols="100" rows="30">
 let contacts = [{
 name: "Maxwell Wright",
 phone: "(0191) 719 6495",
@@ -194,8 +267,8 @@ contacts.push(newContact);
 const num= contacts.length;
 console.log(contacts[0].name);  
 console.log(contacts[num].name);
-</textarea>   
-</div>
+                            </textarea>   
+                        </div>
             </div>
 
             <div class="card" id="tres" data-aos="fade-up"
@@ -206,7 +279,7 @@ console.log(contacts[num].name);
                 <p>Volvamos a nuestra lista de contactos. Después de algunos ajustes recientes (es decir, usar una matriz y objetos) en realidad está comenzando a verse como una lista. Sin embargo, sigue existiendo un problema bastante grave. Los datos cambiantes en la lista, como agregar un nuevo contacto, deben proporcionarse de inmediato en el código del programa. ¿Y si queremos dar al usuario la posibilidad de introducir los datos del contacto añadido mientras se ejecuta el programa? Modifique el programa para agregar, al final de la lista, no el contacto, que se da en el código, sino el que el usuario dará durante la ejecución del programa. Utilice el método prompt para hacer esto. Al final, muestra el primer y el último contacto de la lista.</p>
                 <br>
                 <div class="cuadrado">
-<textarea cols="100" rows="30">
+                    <textarea cols="100" rows="30">
 let contacts = [{
 name: "Maxwell Wright",
 phone: "(0191) 719 6495",
@@ -240,8 +313,8 @@ let last = contacts.length - 1;
                             
 console.log(`${contacts[0].name} / ${contacts[0].phone} / ${contacts[0].email}`);
 console.log(`${contacts[last].name} / ${contacts[last].phone} / ${contacts[last].email}`);
-</textarea>
-</div>
+                    </textarea>
+                </div>
             </div>
 
             <div class="card" id="cuatro" data-aos="fade-up"
@@ -252,7 +325,7 @@ console.log(`${contacts[last].name} / ${contacts[last].phone} / ${contacts[last]
                 <p>Durante la última modificación del programa con la lista de contactos, permitimos que el usuario agregue un nuevo contacto con los datos ingresados por el usuario mientras se ejecuta el programa. Vayamos un paso más allá: intente modificar el programa para que el usuario tenga la opción de elegir lo que quiere hacer con la lista.</p>
                 <br>
                 <div class="cuadrado">
-<textarea cols="100" rows="30">
+                    <textarea cols="100" rows="30">
 let contacts = [{
 name: "Maxwell Wright",
 phone: "(0191) 719 6495",
@@ -310,7 +383,7 @@ let opcion = prompt("Elige opción: Mostrar primer contacto (primero), Mostrar �
                 <p>Podemos mejorar un poco nuestro programa de lista de contactos usando bucles. Ahora puede intentar mostrar no solo el primer o el último contacto, sino todos los contactos de la lista, independientemente de su número.Además, intente encerrar todo el programa en un bucle para que se le pregunte repetidamente al usuario qué quiere hacer.</p>
                 <br>
                 <div class="cuadrado">
-<textarea cols="100" rows="30">
+                    <textarea cols="100" rows="30">
 let contacts = [{
 name: "Maxwell Wright",
 phone: "(0191) 719 6495",
@@ -359,8 +432,8 @@ while (opcion !== "salir") {
         break;
     }
 }
-</textarea>
-</div>
+                        </textarea>
+                    </div>
             </div>
 
             <div class="card" id="seis" data-aos="fade-up"
@@ -371,7 +444,7 @@ while (opcion !== "salir") {
                 <p>Nuestro programa ha crecido bastante, lo que hace que sea un poco difícil de leer. Es especialmente visible en la instrucción switch, donde se incluye la mayor parte de la lógica. Intente organizar el código del programa mediante funciones. Defina y llame a tres funciones en los lugares apropiados:</p>
                 <br>
                 <div class="cuadrado">
-<textarea cols="100" rows="30" >
+                    <textarea cols="100" rows="30" >
 let contacts = [{
     name: "Maxwell Wright",
     phone: "(0191) 719 6495",
@@ -422,18 +495,18 @@ showAllContacts(contacts);
 addNewContact(contacts, "John Doe", "123-456-7890", "john.doe@example.com"); 
 
 showAllContacts(contacts);
-</textarea>
-</div>
+                            </textarea>
+                    </div>
             </div>
             <div class="card" id="siete" data-aos="fade-up"
- data-aos-duration="2000">
+                data-aos-duration="2000">
                 <h1>LABORATORIO 7</h1>
                 <a href="../js/MailynFabian/Laboratorio7.js"><img src="/assets/images/marilynfabian2.png"></a>
                 <br>
                 <p>Usaremos las funciones para agregar un elemento más de funcionalidad. Los arrays tienen un método sort que nos permite ordenar sus elementos. A este método, pasamos una función que debe comparar dos elementos de la matriz y decidir cuál es más pequeño y cuál es más grande. Si el primer elemento es menor, la función devuelve un valor menor que cero, si son iguales devuelve cero, y si el primero es mayor, devuelve un valor mayor que cero. Por ejemplo, la matriz:</p>
                 <br>
                 <div class="cuadrado">
-<textarea cols="100" rows="30">
+                    <textarea cols="100" rows="30">
 let contacts = [
 {
     name: "Maxwell Wright",
@@ -532,8 +605,8 @@ let runProgram = function () {
 };   
 
     runProgram();
-</textarea>
-</div>
+                            </textarea>
+                    </div>
             </div>
         </div>   
     </section>    
@@ -555,10 +628,11 @@ let runProgram = function () {
             </section>
         </section>
 </main>
+
 <footer id="contenedor"  data-aos="fade-up"
 data-aos-anchor-placement="top-bottom" >
     <div class="contenedor footer-content"  data-aos="fade-up"
-    data-aos-anchor-placement="top-bottom">
+        data-aos-anchor-placement="top-bottom">
         <div class="contact-us" >
             <h2 class="brand">Jenny Fabian</h2>
             <p>Estudiante</p>
@@ -573,9 +647,10 @@ data-aos-anchor-placement="top-bottom" >
     <div class="line">
         <p>TODOS LOS DERECHOS RESERVADOS</p>
     </div>
+
 </footer>
-<script src="home.component.spec.ts"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-  </script>
+<script src="src/assets/menu.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
