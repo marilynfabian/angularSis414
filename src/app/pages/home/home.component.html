@@ -82,11 +82,12 @@
     </div>
 </header>
 
-<main>
+<main >
     <section class="laboratorios contenedor" id="laboratorio" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
         <h2 class="subtitulo">Laboratorios Javascript</h2>
         <div class="contenedor-laboratorio">
             <img src="/assets/images/marilynfabian3.png" alt="">
+            
             <div class="checklist-laboratorio">
                 <div class="laboratorio">
                     <h3 class="n-laboratorio"><span class="number">1</span>Laboratorio</h3>
@@ -119,6 +120,8 @@
             </div>
         </div>
 
+        
+
             <!--<div>
                 <table border="1" class="tabla-des">
                     <tr>
@@ -150,83 +153,83 @@
                     </tr>
                 </table>            
             </div>-->
+        
 
-            <div>
-                <form>
-                    <label>Nombres</label><br>
-                    <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"><br>
-                    {{name}}
-                    <label>Abrev</label><br>
-                    <input type="text" [(ngModel)]="abrev" [ngModelOptions]="{standalone: true}"><br>
-                    {{abrev}}
-                    <input type="button" value="Guardar" class="gualdal" (click)="save()">
-                    
-                </form>
-            </div>
-            
-            <div >
-                <table border="1" >
-                    <thead>
-                        <tr class="alert alert-primary" role="alert">
-                            <th>Nro</th>
-                            <th>Abrev.</th>
-                            <th>Nombre</th>
-                            <th>Acciones</th>
-                        </tr>
+        <div class="col mx-10">
+            <div class="col order-1">
+                <table class="table">
+                    <thead >
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Abrev.</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
                     </thead>
+
                     <tbody>
                         <tr *ngFor="let row of dataSource; index as nro" class="alert alert-primary" role="alert" border="1">
-                            <th>{{nro+1}}</th>
-                            <th>{{row.abrev}}</th>
-                            <th>{{row.name}}</th>
+                            <th scope="row">{{nro+1}}</th>
+                            <td>{{row.abrev}}</td>
+                            <td>{{row.name}}</td>
                             <th>
-                                <button class="fa fa-trash float-right text-danger" style="cursor: pointer;" (click)="borrar(row.id)">Eliminar</button>
-                                <button (click)="editar(row)" *ngIf="!formVisibility" class="fa fa-pencil float-right mr-2"
-                                    style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">Editar</button>
+                                <button class="btn btn-primary mx-1" style="cursor: pointer;" (click)="borrar(row.id)">Eliminar</button>
+                                <button class="btn btn-secondary mx-1"
+                                 style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal"(click)="editar(row)">Editar</button>
 
-                                
                             </th>
                         </tr>
                     </tbody>
-                </table>
+                  </table>
+
+
+                
             </div>
+
+            <br>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <form (ngSubmit)="editarForm()" >
-                <div class="modal-body"  >
-                    <div class="form-group">
-                        <label for="">Nombre</label>
-                        <input type="text" class="form-control" name="name" [(ngModel)]="itemEditar.name" >
-                        <label for="">Abrev</label>
-                        <input type="text" class="form-control" name="abrev" [(ngModel)]="itemEditar.abrev" >
-                    </div>
-                    
+
+        <div class="container">
+            <div class="row">
+                <div class="col mx-2" style="background-color:rgb(226, 136, 205); border-radius: 10px; color: aliceblue;">
+                    <h5>Agregar</h5>
+                    <form >
+                        <div class="col-mb-1">
+                            <label>Nombre</label><br>
+                            <input class="form-control" type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"><br>
+                        </div>
+                        <div class="mb-3">
+                            <label>Abreviatura</label><br>
+                            <input class="form-control" type="text" [(ngModel)]="abrev" [ngModelOptions]="{standalone: true}"><br>
+                        </div>
+                            <button type="submit" class="btn btn-primary mx-2" (click)="save()">Guardar</button>
+                    </form>    
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary"  >Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <div class="col mx-2" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color:rgb(200, 131, 217); border-radius: 10px; color: aliceblue;">
+                    <h5>Editar</h5>
+                     <form (ngSubmit)="editarForm()" >
+                            <div class="col-mb-1">
+                                <label for="">Nombre</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="itemEditar.name" >
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="">Abreviatura</label>
+                                <input type="text" class="form-control" name="abrev" [(ngModel)]="itemEditar.abrev" >
+                            </div>
+                                <button type="submit" class="btn btn-primary"  >Actualizar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </form>
                 </div>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+            </div>
             
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>                               
+                  
+        </div>
+
+
+                                          
         <div class="container" id="laboratorio">
             <div class="card" id="uno" data-aos="fade-up"
             data-aos-duration="2000">

@@ -84,13 +84,9 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  formVisibility: any = false;
   
   editar(row:string){
-    this.formVisibility=true;
-    console.log(this.formVisibility)
     this.itemEditar=row;
-    
   }
   
   editarForm() {

@@ -1,5 +1,5 @@
-/*alert("hoa");
-*/
+/*/*alert("hoa");
+
 const hamburguer = document.querySelector('.hamburger');
 const menu = document.querySelector('.menu-navegacion');
 console.log(menu)
@@ -16,3 +16,4 @@ window.addEventListener('click', e=>{
         menu.classList.toggle("spread")
 })
 
+*/*/
