@@ -11,3 +11,4 @@ declare function greet():void;
 export class AppComponent {
   title = 'my-app';
 }
+

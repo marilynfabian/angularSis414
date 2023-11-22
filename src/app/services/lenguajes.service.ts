@@ -39,5 +39,5 @@ export class LenguajesService {
     let uptUrl = this.url + "/" + id + ".json"
     return this.http.put(uptUrl, body)
   }
-
+  
 }

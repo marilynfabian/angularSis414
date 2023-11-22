@@ -1,3 +1,5 @@
+
+
 *{
     margin: 0;
     padding: 0;
@@ -180,6 +182,7 @@ header{
     justify-content: space-evenly;/*espacio equitativo*/
     align-items: center;
     flex-wrap: wrap;
+    
 }
 
 .contenedor-laboratorio img{
@@ -383,21 +386,6 @@ footer{
 .line p{
     margin-top: 30px;
 }
-
-
-.tabla.des{
-    width:100%;
-    border-collapse:collapse;
-}
-
-.tabla.des tr th {
-    background-color: #974bba;
-    color: #fff;
-    border:1px solid #ebc0fd;
-    padding: 5px;
-    text-align: left;
-}
-
 
 
 @media screen and (max-width: 800px) {

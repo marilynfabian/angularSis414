@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LenguajesService } from 'src/app/services/lenguajes.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { DomManipulationService } from 'src/app/services/menu.service';
+
+// @ts-ignore
+
+import * as jsfeat from 'jsfeat';
 import {NgForm} from '@angular/forms';
 import { Conditional } from '@angular/compiler';
- 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,20 +18,24 @@ export class HomeComponent implements OnInit{
 
   dataUsers: any = [];
   dataLanguages: any = [];
-
+  
   //post
   name:string = "";
   abrev:string= "";
   dataSource:any = [];
+  row:any;
+  itemEditar:any={name:'',abrev:''};
 
-  constructor(private usersServices: UsuariosService, private lenguajesServices: LenguajesService, private language: LenguajesService){}
+  idd:any;
+  editing: boolean=false;
 
-  editingId: string = ""; // ID de la fila que está siendo editada
-  editedName: string = "";
-  editedAbrev: string = "";
-  //accion que va a hacer antes
+  
+  constructor(private usersServices: UsuariosService, private lenguajesServices: LenguajesService, private language: LenguajesService,private domManipulationService: DomManipulationService){}
+
   ngOnInit()
   {
+    this.domManipulationService.initializeMenuBehavior();
+
     this.usersServices.getUsers().subscribe( (data) => {
       this.dataUsers = data;
     } );
@@ -75,30 +84,38 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  /*editar(id: string) {
-    const filaAEditar = this.dataSource.find((data) => row.id === id);
-    if (filaAEditar) {
-      this.editedName = filaAEditar.name;
-      this.editedAbrev = filaAEditar.abrev;
-      this.editingId = id;
-    } else {
-      console.error('Fila no encontrada');
-    }
-  }*/
-
-  actualizar(id:string){
-    let aux = confirm("Esta Seguro de Actualizar")
-    let body = 
-    {
-      abrev: this.editedAbrev,
-      name: this.editedName,
-    }    
-    if(!aux) return
-    this.language.updateLanguage(id, body).subscribe( (data) => {
-      if(data!=null)
-      {
-        window.location.reload();
-      }
-    })
+  formVisibility: any = false;
+  
+  editar(row:string){
+    this.formVisibility=true;
+    console.log(this.formVisibility)
+    this.itemEditar=row;
+    
   }
-}
+  
+  editarForm() {
+    
+    let aux = confirm("¿Está seguro de actualizar?");
+    if (!aux) return;
+  
+    let id = this.itemEditar.id; 
+    let nuevosDatos = {
+      name: this.itemEditar.name,
+      abrev: this.itemEditar.abrev,
+    };
+  
+    this.language.updateLanguage(id, nuevosDatos).subscribe((data) => {
+      if (data != null) {
+    
+          window.location.reload();
+        
+      }
+    });
+  }
+  
+       }     
+
+
+  
+
+
