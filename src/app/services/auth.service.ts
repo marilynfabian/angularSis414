@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   logout() {
-    await this.auth.signOut();
+    this.auth.signOut();
     this.router.navigate(['/']);
   }
 }
