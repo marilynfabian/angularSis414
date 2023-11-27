@@ -1,0 +1,13 @@
+<div>
+    <ul>
+        <li><a routerLink="/">Incio</a></li>
+        <li><a routerLink="/labs">Labs</a></li>
+        <li><a routerLink="/otros">Otros</a></li>
+        <li>
+            <a href="#" (click)="salir()" *ngIf="user!=null">Salir</a>
+        </li>
+        <li style="float:right">
+            <a class="active" routerLink="/login">Login <span *ngIf="user!=null">{{user}}</span> ||||||||||||||||||</a>
+        </li>
+      </ul>    
+</div>
