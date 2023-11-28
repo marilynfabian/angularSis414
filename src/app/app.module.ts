@@ -9,11 +9,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { LabsComponent } from './pages/labs/labs.component';
+import { HeaderComponent } from './commons/header/header.component';
+
 
 const config = {apiKey: "AIzaSyCL232kt8fDEMS-byM4-8ZICYQFiTtHXhU",
 authDomain: "apirest-b5100.firebaseapp.com",
@@ -28,14 +31,15 @@ measurementId: "G-CB4Q4HH5G4"}
     AppComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LabsComponent,
+    HeaderComponent
     
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(config),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
+    provideFirebaseApp(()=> initializeApp(config)),
+    provideAuth(()=> getAuth()),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
