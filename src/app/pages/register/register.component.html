@@ -1,9 +1,17 @@
-<p>register works!</p>
-<form>
+<app-header></app-header>  
+
+<div class="login-box">
     <h1>Registrar</h1>
-    <label>email</label>
-    <input type="text" [(ngModel)]="email" name="email">
-    <label>pass</label>
-    <input type="password" [(ngModel)]="pass" name="pass">    
-    <button (click)="guardar()">Guardar</button>
-</form>    
+    <br>
+    <form>
+      <div class="user-box">
+        <input type="text" [(ngModel)]="email" name="email" required="">
+        <label>email</label>
+      </div>
+      <div class="user-box">
+        <input type="password" [(ngModel)]="pass" name="pass" required="">
+        <label>Password</label>
+      </div>
+      <button (click)="guardar()" style="border-radius: 10px; border-color: aliceblue;" >Guardar</button>
+    </form>
+  </div>

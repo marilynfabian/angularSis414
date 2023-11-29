@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
-  getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
@@ -25,7 +24,7 @@ export class AuthService {
     return this.auth.currentUser;
   }
 
-  register(email:string, pass:string){
+  register(email:string, pass:string, returnSecureToken:boolean=true){
     return createUserWithEmailAndPassword(this.auth, email, pass);
   }
 

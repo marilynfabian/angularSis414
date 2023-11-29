@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
-  email: string ='' ;
-  pass: string ='';
+  email: string ="";
+  pass: string ="";
 
 constructor(private authService:AuthService, private router:Router){}
 

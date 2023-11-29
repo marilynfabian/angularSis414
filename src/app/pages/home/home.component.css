@@ -216,7 +216,7 @@ header{
     justify-content: center;
     flex-wrap: wrap;
     margin: 10px;
-    padding-top:20px ;
+    padding-top:200px ;
     text-align: justify;
     text-justify: inter-word;
 }
@@ -224,7 +224,7 @@ header{
 .container .card{
     background-color: #fff;
     width: 80%;
-    height: 80%x;
+    height: 80%;
     border-radius: 8px;
     box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.2);
     margin: auto;

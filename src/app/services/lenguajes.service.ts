@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LenguajesService {
-
-  //url: string ="https://apirest-b5100-default-rtdb.firebaseio.com/v1/topList.json"
-  url: string ="https://apirest-b5100-default-rtdb.firebaseio.com/v1/topList"  
+  url: string ="https://apirest-b5100-default-rtdb.firebaseio.com/v1/topList" 
+  
+  
   constructor(private http: HttpClient) { }
 
   getLenguajes(): Observable<any>

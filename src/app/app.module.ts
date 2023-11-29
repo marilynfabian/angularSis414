@@ -18,7 +18,8 @@ import { LabsComponent } from './pages/labs/labs.component';
 import { HeaderComponent } from './commons/header/header.component';
 
 
-const config = {apiKey: "AIzaSyCL232kt8fDEMS-byM4-8ZICYQFiTtHXhU",
+const config = {
+apiKey: "AIzaSyCL232kt8fDEMS-byM4-8ZICYQFiTtHXhU",
 authDomain: "apirest-b5100.firebaseapp.com",
 databaseURL: "https://apirest-b5100-default-rtdb.firebaseio.com",
 projectId: "apirest-b5100",

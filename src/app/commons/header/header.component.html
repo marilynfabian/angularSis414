@@ -2,12 +2,13 @@
     <ul>
         <li><a routerLink="/">Incio</a></li>
         <li><a routerLink="/labs">Labs</a></li>
-        <li><a routerLink="/otros">Otros</a></li>
+        <li><a routerLink="">Otros</a></li>
         <li>
             <a href="#" (click)="salir()" *ngIf="user!=null">Salir</a>
         </li>
-        <li style="float:right">
+        <li style="float:right; display: flex;  ">
             <a class="active" routerLink="/login">Login <span *ngIf="user!=null">{{user}}</span></a>
+            <a class="active" routerLink="/register">Register</a>
         </li>
       </ul>
 </div>
