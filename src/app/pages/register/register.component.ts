@@ -36,7 +36,6 @@ export class RegisterComponent {
     this.domManipulationService.initializeMenuBehavior();
 
     this.perfilService.getUsuarios().subscribe((data) => {
-      // Asigna directamente el array de datos
       this.dataUsuarios = data;
     
   });
@@ -52,12 +51,11 @@ cargarImagen(event: any) {
     console.log(reader.result);
     this.imagenes.push(reader.result);
 
-    // Sube la imagen a Firebase Storage
+// aqui sube la imagen a Firebase Storage
     this.storage.subirImagen(nombre + "_" + Date.now(), reader.result)
       .then(urlImagen => {
         if (urlImagen) {
           console.log('Imagen subida exitosamente:', urlImagen);
-          // Asigna la URL de la imagen a la propiedad imagenUrl
           this.imagenUrl = urlImagen;
         } else {
           console.log('Error al subir la imagen.');
@@ -81,12 +79,11 @@ guardar() {
     
       this.share.setUserData(perfilData);
 
-      // Llama al método del servicio de perfil para guardar la información del usuario
+      // aqui esta llamando al método del servicio de perfil para guardar la información del usuario
       this.perfilService.postUsuario(perfilData).subscribe(perfilResponse => {
         console.log('Datos del perfil guardados:', perfilResponse);
       });
 
-      // Navega a la página de inicio de sesión
       this.router.navigate(['/login']);
     })
     .catch(error => {

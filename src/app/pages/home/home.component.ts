@@ -72,18 +72,15 @@ export class HomeComponent implements OnInit{
       };
       this.language.postLanguage(body).subscribe((data) => {
         if (data != null) {
-          // Actualizar dataSource sin recargar la página
           const newItem = { id: data.id, ...body };
           this.dataSource.push(newItem);
         }
       },
       (error) => {
         console.error('Error al guardar:', error);
-        // Manejar el error de guardar, pero no desconectar al usuario automáticamente
       });
     } else {
       console.error('Usuario no autenticado. No se puede guardar.');
-      // Puedes mostrar un mensaje al usuario si lo deseas
     }
   }
   
@@ -93,7 +90,6 @@ export class HomeComponent implements OnInit{
       if (!aux) return;
       this.language.deleteLanguage(id).subscribe((data) => {
         if (data == null) {
-          // Actualizar dataSource sin recargar la página
           const index = this.dataSource.findIndex((item: { id: string }) => item.id === id);
           if (index !== -1) {
             this.dataSource.splice(index, 1);
@@ -102,12 +98,10 @@ export class HomeComponent implements OnInit{
       },
       (error) => {
         console.error('Error al eliminar:', error);
-        // Manejar el error de eliminación, pero no desconectar al usuario automáticamente
       }
       );
     } else {
       console.error('Usuario no autenticado. No se puede eliminar.');
-      // Puedes mostrar un mensaje al usuario si lo deseas
     }
   }
   
@@ -115,8 +109,7 @@ export class HomeComponent implements OnInit{
     if (this.authService.getuser() && this.sharedService.getLoading()) {
       this.itemEditar = row;
     } else {
-      console.error('Usuario no autenticado. No se puede editar.');
-      // Puedes mostrar un mensaje al usuario si lo deseas
+      console.error('Usuario no autenticado. No se puede editar.')
     }
   }
   
@@ -140,7 +133,6 @@ export class HomeComponent implements OnInit{
       }});
     } else {
       console.error('Usuario no autenticado. No se puede actualizar.');
-      // Puedes mostrar un mensaje al usuario si lo deseas
     }
   }
   
