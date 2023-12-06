@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LenguajesService } from 'src/app/services/lenguajes.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { DomManipulationService } from 'src/app/services/menu.service';
-
-// @ts-ignore
-
-import * as jsfeat from 'jsfeat';
-import {NgForm} from '@angular/forms';
-import { Conditional } from '@angular/compiler';
-
+import { SharedService } from 'src/app/services/share.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,9 +24,20 @@ export class HomeComponent implements OnInit{
   idd:any;
   editing: boolean=false;
 
-  
-  constructor(private usersServices: UsuariosService, private lenguajesServices: LenguajesService, private language: LenguajesService,private domManipulationService: DomManipulationService){}
+  user:any = "";
+  email: string ="";
+  pass: string ="";
 
+  constructor(
+    private usersServices: UsuariosService, 
+    private lenguajesServices: LenguajesService, 
+    private language: LenguajesService,
+    private domManipulationService: DomManipulationService, 
+    private authService: AuthService,
+    private sharedService: SharedService
+    )
+    {}
+    
   ngOnInit()
   {
     this.domManipulationService.initializeMenuBehavior();
@@ -58,56 +64,86 @@ export class HomeComponent implements OnInit{
     
   }
 
-  save()
-  {
-    let body = 
-    {
-      name: this.name,
-      abrev: this.abrev
+  save() {
+    if (this.authService.getuser() && this.sharedService.getLoading()) {
+      let body = {
+        name: this.name,
+        abrev: this.abrev
+      };
+      this.language.postLanguage(body).subscribe((data) => {
+        if (data != null) {
+          // Actualizar dataSource sin recargar la página
+          const newItem = { id: data.id, ...body };
+          this.dataSource.push(newItem);
+        }
+      },
+      (error) => {
+        console.error('Error al guardar:', error);
+        // Manejar el error de guardar, pero no desconectar al usuario automáticamente
+      });
+    } else {
+      console.error('Usuario no autenticado. No se puede guardar.');
+      // Puedes mostrar un mensaje al usuario si lo deseas
     }
-    this.language.postLanguage(body).subscribe( (data) => {
-      if(data!=null)
-      {
-        window.location.reload();
-      }
-    })
   }
-
-  borrar(id:string){
-    let aux = confirm("Esta Seguro de Borrar?")
-    if(!aux) return
-    this.language.deleteLanguage(id).subscribe( (data) => {
-      if(data==null)
-      {
-        window.location.reload();
-      }
-    })
-  }
-
   
-  editar(row:string){
-    this.itemEditar=row;
+  borrar(id: string) {
+    if (this.authService.getuser() && this.sharedService.getLoading()){
+      let aux = confirm("¿Está seguro de borrar?");
+      if (!aux) return;
+      this.language.deleteLanguage(id).subscribe((data) => {
+        if (data == null) {
+          // Actualizar dataSource sin recargar la página
+          const index = this.dataSource.findIndex((item: { id: string }) => item.id === id);
+          if (index !== -1) {
+            this.dataSource.splice(index, 1);
+          }
+        }
+      },
+      (error) => {
+        console.error('Error al eliminar:', error);
+        // Manejar el error de eliminación, pero no desconectar al usuario automáticamente
+      }
+      );
+    } else {
+      console.error('Usuario no autenticado. No se puede eliminar.');
+      // Puedes mostrar un mensaje al usuario si lo deseas
+    }
+  }
+  
+  editar(row: string) {
+    if (this.authService.getuser() && this.sharedService.getLoading()) {
+      this.itemEditar = row;
+    } else {
+      console.error('Usuario no autenticado. No se puede editar.');
+      // Puedes mostrar un mensaje al usuario si lo deseas
+    }
   }
   
   editarForm() {
-    
-    let aux = confirm("¿Está seguro de actualizar?");
-    if (!aux) return;
+    if (this.authService.getuser() && this.sharedService.getLoading()) {
+      let aux = confirm("¿Está seguro de actualizar?");
+      if (!aux) return;
   
-    let id = this.itemEditar.id; 
-    let nuevosDatos = {
-      name: this.itemEditar.name,
-      abrev: this.itemEditar.abrev,
-    };
+      let id = this.itemEditar.id;
+      let nuevosDatos = {
+        name: this.itemEditar.name,
+        abrev: this.itemEditar.abrev,
+      };
   
-    this.language.updateLanguage(id, nuevosDatos).subscribe((data) => {
-      if (data != null) {
-    
-          window.location.reload();
-        
-      }
-    });
+      this.language.updateLanguage(id, nuevosDatos).subscribe((data) => {
+        if (data != null) {
+          const index = this.dataSource.findIndex((item: { id: string }) => item.id === id);
+        if (index !== -1) {
+          this.dataSource[index] = { id, ...nuevosDatos };
+        }
+      }});
+    } else {
+      console.error('Usuario no autenticado. No se puede actualizar.');
+      // Puedes mostrar un mensaje al usuario si lo deseas
+    }
   }
+  
   
        }     
 

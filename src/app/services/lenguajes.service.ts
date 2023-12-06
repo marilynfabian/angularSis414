@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,7 @@ export class LenguajesService {
   url: string ="https://apirest-b5100-default-rtdb.firebaseio.com/v1/topList" 
   
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getLenguajes(): Observable<any>
   {

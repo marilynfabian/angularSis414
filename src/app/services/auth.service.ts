@@ -24,7 +24,7 @@ export class AuthService {
     return this.auth.currentUser;
   }
 
-  register(email:string, pass:string, returnSecureToken:boolean=true){
+  register(email: string, pass: string,){
     return createUserWithEmailAndPassword(this.auth, email, pass);
   }
 
@@ -40,6 +40,8 @@ export class AuthService {
   async logOut(){
     return signOut(this.auth);
   }
+
+  
 
 
 }

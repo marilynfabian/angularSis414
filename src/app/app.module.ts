@@ -17,6 +17,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { LabsComponent } from './pages/labs/labs.component';
 import { HeaderComponent } from './commons/header/header.component';
 
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+
+
+
 
 const config = {
 apiKey: "AIzaSyCL232kt8fDEMS-byM4-8ZICYQFiTtHXhU",
@@ -27,6 +38,8 @@ storageBucket: "apirest-b5100.appspot.com",
 messagingSenderId: "601733099294",
 appId: "1:601733099294:web:496dab5cadbdde0e45a30f",
 measurementId: "G-CB4Q4HH5G4"}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +59,11 @@ measurementId: "G-CB4Q4HH5G4"}
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

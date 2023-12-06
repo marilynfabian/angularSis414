@@ -1,9 +1,17 @@
 <app-header></app-header>  
-
-<div class="login-box">
-    <h1>Registrar</h1>
+<div  style="background-color: rgb(196, 145, 228); width: auto; height: 1000px;">
+  <div class="login-box">
+    <h1 style="color: aliceblue; text-align: center;">Registrar</h1>
     <br>
     <form>
+      <div class="user-box">
+        <input type="text" [(ngModel)]="Nombres" name="Nombres" required="">
+        <label>Nombres</label>
+      </div>
+      <div class="user-box">
+        <input type="text" [(ngModel)]="Apellidos" name="Apellidos" required="">
+        <label>Apellidos</label>
+      </div>
       <div class="user-box">
         <input type="text" [(ngModel)]="email" name="email" required="">
         <label>email</label>
@@ -12,6 +20,11 @@
         <input type="password" [(ngModel)]="pass" name="pass" required="">
         <label>Password</label>
       </div>
+      <div class="form-group">
+        <h5>seleccionar imagen</h5>
+        <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+      </div>
       <button (click)="guardar()" style="border-radius: 10px; border-color: aliceblue;" >Guardar</button>
     </form>
   </div>
+</div>

@@ -4,11 +4,12 @@
         <li><a routerLink="/labs">Labs</a></li>
         <li><a routerLink="">Otros</a></li>
         <li>
-            <a href="#" (click)="salir()" *ngIf="user!=null">Salir</a>
+            <a href="/" (click)="salir()" *ngIf="user!=null">Salir</a>
         </li>
-        <li style="float:right; display: flex;  ">
-            <a class="active" routerLink="/login">Login <span *ngIf="user!=null">{{user}}</span></a>
-            <a class="active" routerLink="/register">Register</a>
+        <li class="opciones" style="float:right; display: flex;  ">
+            <a class="active" *ngIf="user == null" routerLink="/login">Login</a>
+            <span *ngIf="user != null" style="color: aliceblue; margin: 10px;">{{ user }}</span>
+            <a class="active" routerLink="/register" *ngIf="user==null" >Register</a>
         </li>
       </ul>
 </div>
