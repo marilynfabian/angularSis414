@@ -8,8 +8,9 @@
         </li>
         <li class="opciones" style="float:right; display: flex;  ">
             <a class="active" *ngIf="user == null" routerLink="/login">Login</a>
-            <span *ngIf="user != null" style="color: aliceblue; margin: 10px;">{{ user }}</span>
+            <span *ngIf="user != null" style="color: aliceblue; margin: 20px;">{{ user }}</span>
             <a class="active" routerLink="/register" *ngIf="user==null" >Register</a>
+            <a class="" *ngIf="user != null" routerLink="/perfilusuario" style=" background-color: none;"><img src="/assets/images/chico.png" alt="Usuario" style="width:50px ; height: 50px; margin: -18px; "></a>
         </li>
       </ul>
 </div>

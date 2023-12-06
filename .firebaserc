@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "apirest-b5100"
+  },
+  "targets": {
+    "apirest-b5100": {
+      "hosting": {
+        "my-app": [
+          "apirest-b5100"
+        ]
+      }
+    }
+  }
+}

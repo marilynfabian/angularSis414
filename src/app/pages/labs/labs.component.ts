@@ -33,28 +33,4 @@ export class LabsComponent implements OnInit {
     })
   }
 
-  imagenes: any[] = [];
-  cargarImagen(event: any ){
-    let archivos = event.target.files
-    let reader = new FileReader();
-    let nombre = "marilyn";
-
-    reader.readAsDataURL(archivos[0]);
-    reader.onloadend = () => {
-      console.log(reader.result);
-      this.imagenes.push(reader.result);
-      this.storage.subirImagen(nombre + "_" + Date.now, reader.result).then(urlImagen =>{
-        console.log(urlImagen);
-        let usuario={
-          neme: "jonathan",
-          email:"sadasd",
-          paswoord:"365541532",
-          imgProfile: urlImagen
-        }
-
-      })
-    }
-  }
-
-  
 }

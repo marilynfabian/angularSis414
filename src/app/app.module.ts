@@ -17,15 +17,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { LabsComponent } from './pages/labs/labs.component';
 import { HeaderComponent } from './commons/header/header.component';
 
-import { environment } from '../environments/environment';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { PerfilusuarioComponent } from './pages/perfilusuario/perfilusuario.component';
 
 
 
@@ -47,7 +48,8 @@ measurementId: "G-CB4Q4HH5G4"}
     RegisterComponent,
     LoginComponent,
     LabsComponent,
-    HeaderComponent
+    HeaderComponent,
+    PerfilusuarioComponent
     
   ],
   imports: [
@@ -59,9 +61,11 @@ measurementId: "G-CB4Q4HH5G4"}
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
